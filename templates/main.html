@@ -1,3 +1,26 @@
-{% for r in results %}
-{{r.id}} {{r.navn}}
+
+<style>
+body{
+	font-family:system-ui;
+	background: #cac4c4;
+}
+
+</style>
+
+<h1>Digital dag</h1>
+
+<p>Her kan du melde deg opp som elev og velge hvilke kurs du vil melde deg opp i</p>
+<hr>
+<p>Legg deg til som elev:</p>
+<form action="/leggtilelev" method="POST">
+
+	<input type="text" name="navn" placeholder="Navn">
+	<input type="tel" name="tel" placeholder="Telefonnummer">
+	<input type="submit" text="Send">
+
+</form>
+<hr>
+<h2>Elever påmeldt</h2>
+{% for e in elever %}
+{{e.elev_id}} {{e.navn}} {{e.telefonnummer}} <br>
 {% endfor %}

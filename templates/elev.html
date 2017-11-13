@@ -1,0 +1,23 @@
+
+<style>
+body{
+	font-family:system-ui;
+	background: #cac4c4;
+}
+
+</style>
+
+<h1>Profilen til {{elev.navn}}</h1>
+
+<p>Ditt telefonnummer: {{elev.telefonnummer}}</p>
+
+<p>Du er meldt på følgende kurs:</p>
+{% for k in paameldinger %}
+{{k.kurs_id}} {{k.navn}} <br>
+{% endfor %}
+
+<p>Meld deg på til andre kurs:</p>
+
+{% for k in kurs %}
+{{k.kurs_id}} {{k.navn}} <a href="/melddeg/{{k.kurs_id}}/{{elev.elev_id}}">Meld deg på</a> <br>
+{% endfor %}
