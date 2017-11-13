@@ -1,8 +1,13 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
+var nunjucks = require('nunjucks')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+nunjucks.configure('templates', {
+    autoescape: true,
+    express: app
+});
 
 var database = require('./connect.js')
 
@@ -28,7 +33,7 @@ app.get('/:navn', function (req, res) {
 	`
 
 	database.query(spørring, function (err, results) {
-		res.send(resultatTilTabell(results))
+		res.render('main.html', {results})
 	})
 })
 
